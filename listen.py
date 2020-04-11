@@ -4,25 +4,18 @@
 #pip3 install pyttsx3 SpeechRecognition pyaudio
 
 
-import random
-import datetime
-#import webbrowser
-import pyttsx3
-#import wikipedia
-#from pygame import mixer
 import speech_recognition as sr
-from speech_recognition.__main__ import r, audio
-
-
+import datetime
 
 while True:
     now = datetime.datetime.now()
     r = sr.Recognizer()
     with sr.Microphone() as source:
         print("Tell me something:")
-        audio = r.listen(source)
+        r.adjust_for_ambient_noise(source, duration=0.2)
+        audio = r.listen(source,5)
         try:
-            print("You said:- " + r.recognize_google(audio))
+            print("You said:- " + r.recognize_google(audio,language="sk-SK"))
         except sr.UnknownValueError:
             print("Could not understand audio")
             engine.say('I didnt get that. Rerun the code')

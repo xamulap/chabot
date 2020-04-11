@@ -31,6 +31,16 @@ function random(min, max) {
 		}
 	});
   });
+
+function move() {
+
+	for(var i=0;i<random(1,10);i++) { 
+		var delay = random(100,200)
+		$(".mouth").animate({height:"80px"},delay).animate({height:"50px"},delay);
+	}
+
+}
+
 </script>
 
 
